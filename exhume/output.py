@@ -13,6 +13,8 @@ def _to_serializable(obj: Any) -> Any:
         return obj.to_dict()
     if isinstance(obj, list):
         return [_to_serializable(v) for v in obj]
+    if isinstance(obj, dict):
+        return {k: _to_serializable(v) for k, v in obj.items()}
     return obj
 
 
